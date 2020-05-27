@@ -1,0 +1,64 @@
+<!--
+    <2>、JQuery实现方式
+            1、$.ajax()
+                * 语法：$.ajax({键值对});
+                   常用键值对：url:"发送请求的地址"
+                     type:"请求方式"          ---》POST 或 GET，默认为GET
+                     data:""                ---》2种传参方式
+                     success:function(){}   ---》响应请求成功执行的回调函数
+                     error:function(){}     ---》响应请求失败执行的回调函数
+                     dataType:"数据格式"      ---》设置到接收到响应数据的格式
+                                                 有：xml：返回xml文档，可用JQuery处理。
+                                                    html：返回纯文本HTML信息。
+                                                    script：返回纯文本JavaScript代码。
+                                                    json：返回JSON数据。
+                                                    jsonp：JSONP格式。
+                                                    text：返回纯文本字符串。
+
+            2、$.get()  :发送get请求。
+                * 语法：$.get(url,[data],[callback],[type])
+                   * 参数：
+                        url：请求路劲
+                        data：请求参数
+                        callback：回调函数
+                        type：响应数据格式
+
+            3、$.post() :发送post请求。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入JQuery-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        //定义方法
+        function fun() {
+            //使用 $.ajax() 发送异步请求
+            $.ajax({
+                url:"ajaxServlet",  //请求路径
+                type:"POST",        //请求方式
+                // data:"username=jerry&age=22", //请求参数_方法1
+                data:{"username":"jerry","age":22}, //请求参数_方法2 （推介使用）
+                //响应成功后的回调函数
+                    success:function (data) {
+                    alert(data);
+                },
+                //响应请求错误后执行的回调函数（如请求路径找不到。）
+                error:function () {
+                    alert("请求出错啦！");
+                },
+                dataType:"text"//设置到接收到响应数据的格式
+            });
+        }
+    </script>
+
+</head>
+<body>
+    <input type="button" value="发送异步请求" onclick="fun();">
+
+    <input>
+</body>
+</html>
+

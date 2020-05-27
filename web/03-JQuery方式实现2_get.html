@@ -1,0 +1,36 @@
+<!--
+    <2>、JQuery实现方式
+            2、$.get()  :发送get请求。
+                * 语法：$.get(url,[data],[callback],[type])
+                   * 参数：
+                        url：请求路劲
+                        data：请求参数
+                        callback：回调函数
+                        type：响应数据格式
+
+            3、$.post() :发送post请求。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入JQuery-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        //定义方法
+        function fun() {
+            $.get("ajaxServlet",{username:"Jack"},function (data) {
+                alert(data);
+            },"text");
+        }
+    </script>
+
+</head>
+<body>
+    <input type="button" value="发送异步请求" onclick="fun();">
+
+    <input>
+</body>
+</html>
+
